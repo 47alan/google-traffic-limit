@@ -1,0 +1,12 @@
+[Unit]
+Description=Run traffic limit check periodically
+Requires=traffic-limit.service
+
+[Timer]
+OnBootSec=1min
+# CHECK_INTERVAL 会被安装脚本替换
+OnUnitActiveSec=5min
+AccuracySec=1min
+
+[Install]
+WantedBy=timers.target

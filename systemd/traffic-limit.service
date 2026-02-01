@@ -1,0 +1,11 @@
+[Unit]
+Description=Google Cloud Traffic Limit Monitor
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/opt/traffic-limit/traffic-limit.sh check
+# 日志由脚本自己处理（tee -a），不再由 systemd 重复写入
+
+[Install]
+WantedBy=multi-user.target

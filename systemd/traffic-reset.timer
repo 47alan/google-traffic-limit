@@ -1,0 +1,11 @@
+[Unit]
+Description=Monthly traffic limit reset
+Requires=traffic-reset.service
+
+[Timer]
+# RESET_DAY 会被安装脚本替换，格式：*-*-DD HH:MM:SS
+OnCalendar=*-*-01 00:05:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

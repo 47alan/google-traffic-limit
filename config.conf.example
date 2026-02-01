@@ -1,0 +1,72 @@
+# Google Cloud 流量限制配置文件
+# Traffic Limit Configuration for Google Cloud
+
+# 服务器名称（用于多服务器识别，会显示在通知消息中）
+# Server name for identification (shown in notifications)
+SERVER_NAME=GCP-Server-1
+
+# 流量限制 - 二选一设置
+# Traffic limit - set one of these
+#
+# 方式1: 使用 GB（用于生产环境）
+# TRAFFIC_LIMIT_GB=190
+#
+# 方式2: 使用 MB（用于测试）
+# TRAFFIC_LIMIT_MB=200
+#
+# 如果同时设置，优先使用 MB
+TRAFFIC_LIMIT_GB=190
+TRAFFIC_LIMIT_MB=
+
+# 流量统计模式
+# Traffic counting mode
+# egress  - 只统计出站流量（Google Cloud 计费方式，推荐）
+# ingress - 只统计入站流量
+# both    - 统计双向流量总和
+TRAFFIC_COUNT_MODE=egress
+
+# 网络接口 (通常是 ens4 或 eth0，可通过 ip link 命令查看)
+# Network interface (usually ens4 or eth0, check with 'ip link')
+NETWORK_INTERFACE=ens4
+
+# SSH 端口 (保留 SSH 连接)
+# SSH port to keep open
+SSH_PORT=22
+
+# 计费周期重置日 (每月几号重置，Google Cloud 通常是1号)
+# Billing cycle reset day (day of month to reset, usually 1 for GCP)
+RESET_DAY=1
+
+# 检查间隔 (分钟)
+# Check interval in minutes
+CHECK_INTERVAL=5
+
+# 日志文件路径
+# Log file path
+LOG_FILE=/var/log/traffic-limit.log
+
+# 数据文件路径 (存储流量统计)
+# Data file path (stores traffic statistics)
+DATA_FILE=/var/lib/traffic-limit/traffic_data.json
+
+# 是否启用邮件通知 (需要配置 mailutils)
+# Enable email notifications (requires mailutils)
+ENABLE_EMAIL=false
+EMAIL_ADDRESS=your@email.com
+
+# Telegram Bot 通知配置
+# Telegram Bot notification settings
+# 获取方式: 1) 在 Telegram 搜索 @BotFather 创建 Bot 获取 Token
+#          2) 搜索 @userinfobot 获取你的 Chat ID
+ENABLE_TELEGRAM=true
+TELEGRAM_BOT_TOKEN=你的Bot_Token
+TELEGRAM_CHAT_ID=你的Chat_ID
+
+# 流量警告阈值 (百分比，达到此比例时发送警告)
+# Warning threshold percentage
+WARNING_THRESHOLD=80
+
+# 定期报告 (每天发送一次流量使用报告)
+# Daily report
+ENABLE_DAILY_REPORT=true
+DAILY_REPORT_HOUR=9
