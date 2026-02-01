@@ -11,8 +11,8 @@
 
 # 不使用 set -e，避免命令失败导致脚本退出
 
-# 脚本目录
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# 脚本目录（解析软链接，获取真实路径）
+SCRIPT_DIR="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")" && pwd)"
 CONFIG_FILE="${SCRIPT_DIR}/config.conf"
 LOCK_FILE="/var/lib/traffic-limit/traffic-limit.lock"
 LOG_FILE="/var/log/traffic-limit.log"

@@ -1,0 +1,15 @@
+# Auto detect text files and perform LF normalization
+* text=auto eol=lf
+
+# Shell scripts must use LF
+*.sh text eol=lf
+
+# Configuration files
+*.conf text eol=lf
+*.service text eol=lf
+*.timer text eol=lf
+
+# Keep these as-is
+*.png binary
+*.jpg binary
+*.gif binary

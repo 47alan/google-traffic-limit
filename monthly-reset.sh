@@ -6,7 +6,8 @@
 
 # 不使用 set -e，避免某些命令失败导致整个重置失败
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# 解析软链接，获取真实脚本路径
+SCRIPT_DIR="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")" && pwd)"
 CONFIG_FILE="${SCRIPT_DIR}/config.conf"
 LOCK_FILE="/var/lib/traffic-limit/traffic-limit.lock"
 

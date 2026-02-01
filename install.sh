@@ -146,7 +146,7 @@ install_files() {
         cp "${script_dir}/systemd/"*.timer "$SYSTEMD_DIR/"
     else
         # 远程安装 - 从 GitHub 下载
-        local base_url="https://raw.githubusercontent.com/YOUR_USERNAME/google-traffic-limit/main"
+        local base_url="https://raw.githubusercontent.com/47alan/google-traffic-limit/main"
 
         curl -sSL "$base_url/traffic-limit.sh" -o "$INSTALL_DIR/traffic-limit.sh"
         curl -sSL "$base_url/monthly-reset.sh" -o "$INSTALL_DIR/monthly-reset.sh"
